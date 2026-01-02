@@ -18,20 +18,19 @@
 #include <utility>
 #include <vector>
 
-int rotate(int pos, std::string op)
-{
-  auto v = std::atoi(op.c_str()+1);
-  switch(op[0]){
+int rotate(int pos, std::string op) {
+  auto v = std::atoi(op.c_str() + 1);
+  switch (op[0]) {
 
   case 'L':
-    pos = (pos - v)%100;
+    pos = (pos - v) % 100;
     if (pos < 0)
-      pos +=100;
+      pos += 100;
     return pos;
   case 'R':
-    return (pos + v)%100;
+    return (pos + v) % 100;
   default:
-  assert(false);
+    assert(false);
   }
 }
 

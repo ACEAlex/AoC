@@ -18,13 +18,10 @@
 #include <utility>
 #include <vector>
 
-inline int positive_mod(int v, int m) {
-    return (v % m + m) % m;
-}
+inline int positive_mod(int v, int m) { return (v % m + m) % m; }
 
-int rotate(int pos, std::string op, int& score)
-{
-  auto v = std::atoi(op.c_str()+1);
+int rotate(int pos, std::string op, int &score) {
+  auto v = std::atoi(op.c_str() + 1);
   int inc = 0;
 
   if (op[0] == 'L')
@@ -34,15 +31,14 @@ int rotate(int pos, std::string op, int& score)
   else
     assert(false);
 
-    while (v > 0)
-    {
-      pos += inc;
-      pos = positive_mod(pos, 100);
-      if (pos == 0)
-        score++;
-      v--;
-    }
-    return pos;
+  while (v > 0) {
+    pos += inc;
+    pos = positive_mod(pos, 100);
+    if (pos == 0)
+      score++;
+    v--;
+  }
+  return pos;
 }
 
 int main(int argc, char **argv) {
@@ -51,7 +47,7 @@ int main(int argc, char **argv) {
   int position = 50;
   int d = 0;
 
-  std::cout << rotate(50, "L50", d)  << " d " << d << std::endl; 
+  std::cout << rotate(50, "L50", d) << " d " << d << std::endl;
   assert(rotate(50, "L50", d) == 0);
   assert(rotate(50, "L51", d) == 99);
   assert(rotate(50, "R2", d) == 52);
@@ -66,7 +62,7 @@ int main(int argc, char **argv) {
       break;
 
     position = rotate(position, input, score2);
-    //std::cout << input << "** " << position << " " << score2 << std::endl;
+    // std::cout << input << "** " << position << " " << score2 << std::endl;
     if (position == 0)
       score++;
   }
